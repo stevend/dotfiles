@@ -9,8 +9,8 @@ else
   echo "Homebrew already installed ($(which brew))"
 fi
 
-# copy brewfile
-# brew bundle --global
+echo "Running brew bundle..."
+brew bundle
 
 
 
