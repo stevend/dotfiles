@@ -1,5 +1,6 @@
-tap 'caskroom/cask
+tap 'homebrew/bundle'
 tap 'homebrew/services'
+tap 'caskroom/cask'
 
 brew 'awscli'
 # brew 'docker'
