@@ -1,0 +1,41 @@
+{
+  "color_scheme": "Packages/Darkula Color Scheme/darkula.tmTheme",
+  "ensure_newline_at_eof_on_save": true,
+  "folder_exclude_patterns":
+  [
+    ".bundle",
+    ".git",
+    ".github",
+    "cops",
+    "foreman",
+    "node_modules",
+    "results",
+    "tmp"
+  ],
+  "font_size": 12,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "index_exclude_patterns":
+  [
+    "*.log",
+    "/Users/stevend/src/marketplace/forumtest*",
+    "/Users/stevend/src/marketplace/.git*",
+    "/Users/stevend/src/marketplace/.bundle*",
+    "/Users/stevend/src/marketplace/app/adapters*",
+    "/Users/stevend/src/marketplace/tmp*",
+    "/Users/stevend/src/marketplace/app/caching*",
+    "/Users/stevend/src/marketplace/bin*",
+    "/Users/stevend/src/marketplace/node_modules*"
+  ],
+  "rulers":
+  [
+    120
+  ],
+  "tab_size": 2,
+  "terminal": "iTerm",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true
+}
+
