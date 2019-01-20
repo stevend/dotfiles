@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+echo "=================================================="
+echo "============= macOS Bootstrap script ============="
+echo "=================================================="
+
+### Request sudo password so the script has access to do the things
+echo
 echo "Requesting sudo password..."
 sudo -v
 echo
@@ -7,23 +13,28 @@ echo
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-### OS Prep
-# Update the OS and Install Xcode Tools
-echo "------------------------------"
-echo "Updating macOS.  If this requires a restart, run the script again."
+
+echo "----------------------------------------------"
+echo "- XCode tools and Software updates"
+echo "----------------------------------------------"
+echo
+echo "* Installing Xcode Command Line Tools."
+# Install Xcode command line tools
+xcode-select --install
+
+echo "* Running softwareupdate. If this requires a restart, run the script again."
 # Install all available updates
 sudo softwareupdate -ia
 # Install only recommended available updates
 #sudo softwareupdate -ir
 
-echo "------------------------------"
-echo "Installing Xcode Command Line Tools."
-# Install Xcode command line tools
-xcode-select --install
-
-### Brew
-# Check for Homebrew,
-# Install if we don't have it
+echo
+echo "----------------------------------------------"
+echo "- Homebrew"
+echo "----------------------------------------------"
+echo
+echo "* Install/Update Homebrew"
+# Check for Homebrew, Install if we don't have it
 if [ ! $(which brew) ]; then
   echo "Installing homebrew..."
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -31,18 +42,28 @@ else
   echo "Homebrew already installed ($(which brew))"
 fi
 
+echo
+# echo "* Running 'brew update' ..."
 # brew update
+
+# echo "* Running 'brew upgrade --all' ..."
 # brew upgrade --all
 
-echo
-echo "Running brew bundle..."
+echo "* Running 'brew bundle' ..."
 echo
 brew bundle
 
+# echo "* Running 'brew cleanup' ..."
 # brew cleanup
 
+echo
+echo "----------------------------------------------"
+echo "- macOS defaults"
+echo "----------------------------------------------"
+echo
+
 # Set OS settings and defaults
-echo "Setting macOS settings and defaults..."
+echo "* Setting macOS settings and defaults..."
 
 # Finder
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -58,20 +79,20 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
-
+# Kill affected applications (for settings to take effect)
 for app in "Dock" "Finder"; do
     killall "${app}" > /dev/null 2>&1
 done
 
-###############################################################################
-# Sublime Text                                                                #
-###############################################################################
+# echo
+# echo "----------------------------------------------"
+# echo "- "
+# echo "----------------------------------------------"
+# echo
 
+# Copy
 # Install Sublime Text settings
 # cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
 
 echo
-echo "Bootstrap finished!"
+echo "* Bootstrap finished!"
