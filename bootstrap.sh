@@ -84,16 +84,16 @@ for app in "Dock" "Finder"; do
     killall "${app}" > /dev/null 2>&1
 done
 
-# echo
-# echo "----------------------------------------------"
-# echo "- Configure Zsh Shell"
-# echo "----------------------------------------------"
-# echo
+echo
+echo "----------------------------------------------"
+echo "- Configure Zsh Shell"
+echo "----------------------------------------------"
+echo
 
 # Set zsh as default shell
 echo "* Set zsh as the shell"
 # Add zsh path to list of allowable shells
-sudo echo "$(which zsh)" >> /etc/shells
+sudo sh -c "echo $(which zsh) >> /etc/shells"
 # Change shell to zsh
 chsh -s $(which zsh)
 
@@ -106,9 +106,9 @@ cp aliases.zsh ~/.oh-my-zsh/custom/
 cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
 
 # Display notice about installing additional iterm2 color schemes
-echo "* You should install the Solarized color schemes for iterm2 so zsh looks better"
-echo "Color schemes have been included in solarized-dark.itermcolors and solarized-light.itermcolors"
-echo "See - https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#installation for installation instructions"
+# echo "* You should install the Solarized color schemes for iterm2 so zsh looks better"
+# echo "Color schemes have been included in solarized-dark.itermcolors and solarized-light.itermcolors"
+# echo "See - https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#installation for installation instructions"
 
 # Copy
 # Install Sublime Text settings
