@@ -36,25 +36,37 @@ echo
 echo "* Install/Update Homebrew"
 # Check for Homebrew, Install if we don't have it
 if [ ! $(which brew) ]; then
-  echo "Installing homebrew..."
+  echo "Installing homebrew ..."
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   echo "Homebrew already installed ($(which brew))"
 fi
 
 echo
-# echo "* Running 'brew update' ..."
-# brew update
+echo "* Running 'brew update' ..."
+brew update
 
-# echo "* Running 'brew upgrade --all' ..."
-# brew upgrade --all
+echo "* Running 'brew upgrade --all' ..."
+brew upgrade --all
 
-echo "* Running 'brew bundle' ..."
 echo
+echo "* Running 'brew bundle' ..."
 brew bundle
 
-# echo "* Running 'brew cleanup' ..."
-# brew cleanup
+echo
+echo "* Running 'brew cleanup' ..."
+brew cleanup
+
+echo
+echo "* Starting services"
+brew services start redis
+brew services start postgresql
+
+# extra setup needed for postgres...
+# create db for your user
+# > createdb `whoami`
+# create postres user
+# > createuser -s postgres
 
 echo
 echo "----------------------------------------------"
@@ -63,7 +75,7 @@ echo "----------------------------------------------"
 echo
 
 # Set OS settings and defaults
-echo "* Setting macOS settings and defaults..."
+echo "* Setting macOS settings and defaults ..."
 
 # Finder
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -81,7 +93,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Kill affected applications (for settings to take effect)
 for app in "Dock" "Finder"; do
-    killall "${app}" > /dev/null 2>&1
+  killall "${app}" > /dev/null 2>&1
 done
 
 echo
@@ -91,7 +103,7 @@ echo "----------------------------------------------"
 echo
 
 # Set zsh as default shell
-echo "* Set zsh as the shell"
+echo "* Set zsh as the shell ..."
 # Add zsh path to list of allowable shells
 sudo sh -c "echo $(which zsh) >> /etc/shells"
 # Change shell to zsh
@@ -113,6 +125,14 @@ cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
 # Copy
 # Install Sublime Text settings
 # cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+
+# rbenv
+# initialize
+eval "$(rbenv init -)"
+
+# copy default gems file to rbenv root
+cp rbenv-default-gems "$(rbenv root)/default-gems"
+
 
 echo
 echo "* Bootstrap finished!"
