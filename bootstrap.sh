@@ -86,9 +86,24 @@ done
 
 # echo
 # echo "----------------------------------------------"
-# echo "- "
+# echo "- Configure Zsh Shell"
 # echo "----------------------------------------------"
 # echo
+
+# Set zsh as default shell
+echo "* Set zsh as the shell"
+# Add zsh path to list of allowable shells
+sudo echo "$(which zsh)" >> /etc/shells
+# Change shell to zsh
+chsh -s $(which zsh)
+
+# Install oh-my-zsh framework
+echo "* Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# copy zsh custom settings
+cp aliases.zsh ~/.oh-my-zsh/custom/
+cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
 
 # Copy
 # Install Sublime Text settings
