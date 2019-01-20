@@ -116,6 +116,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # copy zsh custom settings
 cp aliases.zsh ~/.oh-my-zsh/custom/
 cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
+cp rbenv.zsh ~/.oh-my-zsh/custom/
 
 # Display notice about installing additional iterm2 color schemes
 # echo "* You should install the Solarized color schemes for iterm2 so zsh looks better"
