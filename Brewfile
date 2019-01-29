@@ -2,6 +2,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/cask'
 
+brew 'adr-tools'
 brew 'awscli'
 # brew 'docker'
 # brew 'docker-compose'
