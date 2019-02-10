@@ -46,8 +46,8 @@ echo
 echo "* Running 'brew update' ..."
 brew update
 
-echo "* Running 'brew upgrade --all' ..."
-brew upgrade --all
+echo "* Running 'brew upgrade' ..."
+brew upgrade
 
 echo
 echo "* Running 'brew bundle' ..."
