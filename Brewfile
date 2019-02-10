@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/cask'
+tap 'homebrew/cask-fonts'
 
 brew 'adr-tools'
 brew 'awscli'
@@ -35,6 +36,8 @@ cask 'keybase'
 cask 'krisp'
 cask 'pgadmin4'
 cask 'sequel-pro'
+
+cask 'font-source-code-pro'
 
 # Signing in to the Mac App Store is temp disabled (https://github.com/mas-cli/mas#-sign-in) as such it can't be used to download apps
 # mas '1Password 7', id: 1333542190

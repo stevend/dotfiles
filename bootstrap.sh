@@ -91,6 +91,9 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Fix macOS Mojave Font Rendering Issue - https://ahmadawais.com/fix-macos-mojave-font-rendering-issue/
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+
 # Kill affected applications (for settings to take effect)
 for app in "Dock" "Finder"; do
   killall "${app}" > /dev/null 2>&1
