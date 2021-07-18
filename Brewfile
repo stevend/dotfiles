@@ -1,6 +1,6 @@
 tap 'homebrew/bundle'
 tap 'homebrew/services'
-tap 'caskroom/cask'
+tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
 brew 'adr-tools'
