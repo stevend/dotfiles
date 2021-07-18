@@ -127,6 +127,8 @@ cp pyenv.zsh ~/.oh-my-zsh/custom/
 # echo "Color schemes have been included in solarized-dark.itermcolors and solarized-light.itermcolors"
 # echo "See - https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#installation for installation instructions"
 
+source ~/.zshrc
+
 # Copy
 # Install Sublime Text settings
 # cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
