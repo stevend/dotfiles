@@ -59,8 +59,8 @@ brew cleanup
 
 echo
 echo "* Starting services"
-brew services start redis
-brew services start postgresql
+# brew services start redis
+# brew services start postgresql
 
 # extra setup needed for postgres...
 # create db for your user
@@ -91,9 +91,6 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# Fix macOS Mojave Font Rendering Issue - https://ahmadawais.com/fix-macos-mojave-font-rendering-issue/
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
-
 # Kill affected applications (for settings to take effect)
 for app in "Dock" "Finder"; do
   killall "${app}" > /dev/null 2>&1
@@ -112,15 +109,31 @@ sudo sh -c "echo $(which zsh) >> /etc/shells"
 # Change shell to zsh
 chsh -s $(which zsh)
 
-# Install oh-my-zsh framework
-echo "* Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install ZIM framework
+if [ ! $(which zimfw) ]; then
+  echo "Installing ZIMFW ..."
+  curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+else
+  echo "ZIMFW already installed ($(which zimfw))"
+fi
+
+# copy zim settings
+cp .zimrc ~/.zimrc
+
+# install zim modules (e.g asdf)
+# zimfw install
+
+# copy asdf settings
+cp .asdfrc ~/.asdfrc
+
+# install asdf plugins
+asdf plugin add ruby
 
 # copy zsh custom settings
-cp aliases.zsh ~/.oh-my-zsh/custom/
-cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
-cp rbenv.zsh ~/.oh-my-zsh/custom/
-cp pyenv.zsh ~/.oh-my-zsh/custom/
+# cp aliases.zsh ~/.oh-my-zsh/custom/
+# cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
+# cp rbenv.zsh ~/.oh-my-zsh/custom/
+# cp pyenv.zsh ~/.oh-my-zsh/custom/
 
 # Display notice about installing additional iterm2 color schemes
 # echo "* You should install the Solarized color schemes for iterm2 so zsh looks better"
@@ -129,21 +142,19 @@ cp pyenv.zsh ~/.oh-my-zsh/custom/
 
 source ~/.zshrc
 
-# Copy
-# Install Sublime Text settings
-# cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
-
 # Ensure rubygems is up to date
-gem update --system
+# gem update --system
 
 # copy default gems file to rbenv root
-cp rbenv-default-gems "$(rbenv root)/default-gems"
+# cp rbenv-default-gems "$(rbenv root)/default-gems"
 
 ## puma-dev
 # initial setup
 # sudo puma-dev -setup
 # install
 # puma-dev -install
+
+source ~/.zshrc
 
 echo
 echo "* Bootstrap finished!"
