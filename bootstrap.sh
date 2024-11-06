@@ -120,14 +120,8 @@ fi
 # copy zim settings
 cp .zimrc ~/.zimrc
 
-# install zim modules (e.g asdf)
+# install zim modules (if using any)
 # zimfw install
-
-# copy asdf settings
-cp .asdfrc ~/.asdfrc
-
-# install asdf plugins
-asdf plugin add ruby
 
 # copy zsh custom settings
 # cp aliases.zsh ~/.oh-my-zsh/custom/
