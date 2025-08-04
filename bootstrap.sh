@@ -120,6 +120,10 @@ fi
 # copy zim settings
 cp .zimrc ~/.zimrc
 
+# Set up ASDF
+cp .asdfrc ~/.asdfrc
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.zshrc
+
 # install zim modules (if using any)
 # zimfw install
 
