@@ -110,19 +110,22 @@ sudo sh -c "echo $(which zsh) >> /etc/shells"
 chsh -s $(which zsh)
 
 # Install ZIM framework
-if [ ! $(which zimfw) ]; then
-  echo "Installing ZIMFW ..."
-  curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-else
-  echo "ZIMFW already installed ($(which zimfw))"
-fi
+# if [ ! $(which zimfw) ]; then
+#   echo "Installing ZIMFW ..."
+#   curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+# else
+#   echo "ZIMFW already installed ($(which zimfw))"
+# fi
 
 # copy zim settings
-cp .zimrc ~/.zimrc
+# cp .zimrc ~/.zimrc
 
 # Set up ASDF
-cp .asdfrc ~/.asdfrc
-echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.zshrc
+# cp .asdfrc ~/.asdfrc
+# echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.zshrc
+
+# Activate mise
+echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 
 # install zim modules (if using any)
 # zimfw install
