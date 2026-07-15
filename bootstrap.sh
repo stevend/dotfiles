@@ -133,7 +133,7 @@ echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 # copy zsh custom settings
 # cp aliases.zsh ~/.oh-my-zsh/custom/
 # cp my-zsh-custom.zsh ~/.oh-my-zsh/custom/
-# cp rbenv.zsh ~/.oh-my-zsh/custom/
+
 # cp pyenv.zsh ~/.oh-my-zsh/custom/
 
 # Display notice about installing additional iterm2 color schemes
@@ -146,8 +146,7 @@ source ~/.zshrc
 # Ensure rubygems is up to date
 # gem update --system
 
-# copy default gems file to rbenv root
-# cp rbenv-default-gems "$(rbenv root)/default-gems"
+
 
 ## puma-dev
 # initial setup
